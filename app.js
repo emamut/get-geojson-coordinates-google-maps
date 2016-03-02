@@ -1,5 +1,6 @@
-var polyline = require('polyline');
+"use strict";
 
-var result = polyline.decode("}qpwFxdsbMvCz@|@wC|@uCDWDSOEeGaB}Aa@yFaBcDy@sCs@h@gBtGsSPm@SKmBoAyByAkFoDoFkDz@uC");
-console.log('RESULT', result);
+polyline = require('polyline'),
+value = "pls@hii~MyDUuG[H{ADmA`ABjABZEXOZi@j@cAo@]qC{AaEiCg@_@eAg@AGbA_EZ_Bf@gAtBDfALtAH";
 
+console.log(polyline.decode(value));
