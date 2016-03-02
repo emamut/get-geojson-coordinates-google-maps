@@ -4,7 +4,7 @@ var polyline = require('polyline'),
 request = require("request"),
 directions = {
     'origin': [-1.304536, -78.636797],
-    'destination':[-1.722909, -78.762353]
+    'destination': [-1.722909, -78.762353]
 }
 
 request("https://maps.googleapis.com/maps/api/directions/json?origin=" + directions.origin[0] + "," + directions.origin[1] + "&destination=" + directions.destination[0] + "," + directions.destination[1], function (error, response, body) {
