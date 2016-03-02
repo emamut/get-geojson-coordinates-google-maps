@@ -2,10 +2,12 @@
   "name": "test-create-geojson",
   "version": "0.0.1",
   "author": "Faber Vergara <fvergara@elcomercio.com>",
-  "keywords": ["geojson", "node"],
+  "keywords": [
+    "geojson",
+    "node"
+  ],
   "description": "A simple geojson generator",
   "dependencies": {
-    "polyline": "^0.2.0",
-    "fs": "0.0.2"
+    "polyline": "^0.2.0"
   }
 }
