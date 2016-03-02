@@ -8,6 +8,7 @@
   ],
   "description": "A simple geojson generator",
   "dependencies": {
-    "polyline": "^0.2.0"
+    "polyline": "^0.2.0",
+    "request": "^2.69.0"
   }
 }

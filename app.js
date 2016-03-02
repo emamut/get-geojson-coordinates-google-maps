@@ -1,6 +1,24 @@
 "use strict";
 
-polyline = require('polyline'),
-value = "pls@hii~MyDUuG[H{ADmA`ABjABZEXOZi@j@cAo@]qC{AaEiCg@_@eAg@AGbA_EZ_Bf@gAtBDfALtAH";
+var polyline = require('polyline'),
+request = require("request"),
+directions = {
+    'origin': [-1.304536, -78.636797],
+    'destination':[-1.722909, -78.762353]
+}
 
-console.log(polyline.decode(value));
+request("https://maps.googleapis.com/maps/api/directions/json?origin=" + directions.origin[0] + "," + directions.origin[1] + "&destination=" + directions.destination[0] + "," + directions.destination[1], function (error, response, body) {
+    body = JSON.parse(body);
+    var coordinates = {};
+    coordinates.type = "LineString";
+
+    coordinates.coordinates = polyline.decode(body.routes[0].overview_polyline.points);
+    for(var cont = 0; cont < coordinates.coordinates.length; cont++) {
+        var temp;
+        temp = coordinates.coordinates[cont][0];
+        coordinates.coordinates[cont][0] = coordinates.coordinates[cont][1];
+        coordinates.coordinates[cont][1] = temp;
+    }
+
+    console.log(JSON.stringify(coordinates));
+});
