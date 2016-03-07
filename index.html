@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>GeoJSON coordinates with Google Maps API</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>GeoJSON coordinates with Google Maps API</h1>
+            </div>
+
+            <form class="form-inline" method="post">
+                <div class="form-group">
+                    <label for="origin" class="sr-only"></label>
+                    <input type="text" class="form-control" id="origin" name="origin" placeholder="Origen">
+                </div>
+
+                <div class="form-group">
+                    <label for="destination" class="sr-only"></label>
+                    <input type="text" class="form-control" id="destination" name="destination" placeholder="Destino">
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-success">Enviar</button>
+                </div>
+            </form>
+
+            <textarea name="result" id="result" cols="20" rows="15" class="form-control" style="margin-top: 20px" readonly></textarea>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+        <script type="text/javascript">
+            $('form').submit(function(event) {
+                event.preventDefault();
+                var form_data = $(this).serializeArray();
+                // console.log('FORM_DATA', form_data)
+                $.post('response', form_data, function(data, textStatus, xhr) {
+                    console.log('DATA, TEXTSTATUS, XHR', data, textStatus, xhr)
+                });
+            });
+        </script>
+    </body>
+</html>
