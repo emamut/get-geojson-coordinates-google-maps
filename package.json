@@ -1,19 +1,17 @@
 {
   "name": "test-create-geojson",
   "version": "0.0.1",
-  "author": "Faber Vergara <fvergara@elcomercio.com>",
+  "author": "Faber Vergara <fabervergara@gmail.com>",
+  "homepage": "http://emamut.github.io",
+  "repository": "https://github.com/emamut/get-geojson-coordinates-google-maps.git",
   "keywords": [
     "geojson",
     "node"
   ],
-  "scripts": {
-    "test": "nodemon server.js"
-  },
   "description": "A simple geojson generator",
   "dependencies": {
     "polyline": "^0.2.0",
     "request": "^2.69.0",
-    "express": "^4.13.4",
-    "path": "^0.12.7"
+    "prompt": "^1.0.0"
   }
 }
