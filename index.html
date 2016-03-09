@@ -15,12 +15,12 @@
             <form class="form-inline" method="post">
                 <div class="form-group">
                     <label for="origin" class="sr-only"></label>
-                    <input type="text" class="form-control" id="origin" name="origin" placeholder="Origen">
+                    <input type="text" class="form-control" id="origin" name="origin" placeholder="Origen" value="-0.279822, -78.532939">
                 </div>
 
                 <div class="form-group">
                     <label for="destination" class="sr-only"></label>
-                    <input type="text" class="form-control" id="destination" name="destination" placeholder="Destino">
+                    <input type="text" class="form-control" id="destination" name="destination" placeholder="Destino" value="-0.252013, -78.521781">
                 </div>
 
                 <div class="form-group">
@@ -36,9 +36,8 @@
             $('form').submit(function(event) {
                 event.preventDefault();
                 var form_data = $(this).serializeArray();
-                // console.log('FORM_DATA', form_data)
-                $.post('response', form_data, function(data, textStatus, xhr) {
-                    console.log('DATA, TEXTSTATUS, XHR', data, textStatus, xhr)
+                $.post('response', form_data, function(data) {
+                    $('#result').val(JSON.stringify(data, undefined));
                 });
             });
         </script>

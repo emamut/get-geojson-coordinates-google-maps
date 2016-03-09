@@ -6,14 +6,12 @@
     "geojson",
     "node"
   ],
-  "scripts": {
-    "test": "nodemon server.js"
-  },
   "description": "A simple geojson generator",
   "dependencies": {
     "polyline": "^0.2.0",
     "request": "^2.69.0",
     "express": "^4.13.4",
-    "path": "^0.12.7"
+    "fs": "0.0.2",
+    "body-parser": "^1.15.0"
   }
 }
