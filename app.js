@@ -2,13 +2,14 @@
 
 var polyline = require('polyline'),
 request = require("request"),
-prompt = require('prompt');
+app = require("express")(),
+bodyParser = require('body-parser'),
+fs = require("fs");
 
-prompt.start();
+app.use(bodyParser.urlencoded({ extended: false }));
 
-prompt.get(['origin', 'destination'], function (err, result) {
-    if (err) { return onErr(err); }
-    request("https://maps.googleapis.com/maps/api/directions/json?origin=" + result.origin + "&destination=" + result.destination, function (error, response, body) {
+app.post('/response', function (req, res) {
+    request("https://maps.googleapis.com/maps/api/directions/json?origin=" + req.body.origin + "&destination=" + req.body.destination, function (error, response, body) {
         body = JSON.parse(body);
         var coordinates = {};
         coordinates.type = "LineString";
@@ -21,11 +22,19 @@ prompt.get(['origin', 'destination'], function (err, result) {
             coordinates.coordinates[cont][1] = temp;
         }
 
-        console.log(JSON.stringify(coordinates));
+        // res.setHeader('Content-Type', 'application/json');
+        res.send(coordinates);
     });
 });
 
-function onErr(err) {
-    console.log(err);
-    return 1;
-}
+app.get('/', function (request, response) {
+    fs.readFile('index.html', function(err, page) {
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.write(page);
+        response.end();
+    });
+});
+
+app.listen(3000, function () {
+    console.log('Open in your browser http://localhost:3000');
+});

@@ -1,8 +1,7 @@
 {
   "name": "test-create-geojson",
-  "version": "0.0.1",
-  "author": "Faber Vergara <fabervergara@gmail.com>",
-  "homepage": "http://emamut.github.io",
+  "version": "1.0.0",
+  "author": "Faber Vergara <fvergara@elcomercio.com>",
   "repository": "https://github.com/emamut/get-geojson-coordinates-google-maps.git",
   "keywords": [
     "geojson",
@@ -12,6 +11,8 @@
   "dependencies": {
     "polyline": "^0.2.0",
     "request": "^2.69.0",
-    "prompt": "^1.0.0"
+    "express": "^4.13.4",
+    "fs": "0.0.2",
+    "body-parser": "^1.15.0"
   }
 }
