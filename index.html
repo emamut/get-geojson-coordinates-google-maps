@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <title>GeoJSON coordinates with Google Maps API</title>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     </head>
     <body>
         <div class="container">
@@ -15,20 +16,27 @@
             <form class="form-inline" method="post">
                 <div class="form-group">
                     <label for="origin" class="sr-only"></label>
-                    <input type="text" class="form-control" id="origin" name="origin" placeholder="Origen" value="-0.279822, -78.532939">
+
+                    <input type="text" class="form-control" id="origin" name="origin" placeholder="Origin">
                 </div>
 
                 <div class="form-group">
                     <label for="destination" class="sr-only"></label>
-                    <input type="text" class="form-control" id="destination" name="destination" placeholder="Destino" value="-0.252013, -78.521781">
+                    <input type="text" class="form-control" id="destination" name="destination" placeholder="Destination">
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-success">Enviar</button>
+                    <button class="btn btn-success">Send</button>
                 </div>
             </form>
 
-            <textarea name="result" id="result" cols="20" rows="15" class="form-control" style="margin-top: 20px" readonly></textarea>
+            <div class="row">
+                <div class="col-md-6">
+                    <textarea name="result" id="result" cols="20" rows="15" class="form-control" style="margin-top: 20px" readonly></textarea>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+
         </div>
 
         <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
