@@ -1,6 +1,6 @@
 {
   "name": "get-geojson-coordinates-google-maps",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "author": "Faber Vergara <fvergara@elcomercio.com>",
   "repository": "https://github.com/emamut/get-geojson-coordinates-google-maps.git",
   "keywords": [
