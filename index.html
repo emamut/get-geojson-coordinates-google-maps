@@ -30,7 +30,7 @@
 
                             <div class="input-group">
                                 <span class="input-group-addon" id="orig-addon"><i class="fa fa-bullseye"></i></span>
-                                <input type="text" class="form-control" id="origin" name="origin" placeholder="Origin" aria-describedby="orig-addon" value="3.792435, -76.313538">
+                                <input type="text" class="form-control" id="origin" name="origin" placeholder="Origin" aria-describedby="orig-addon" value="3.792435, -76.313538" required>
                             </div>
                         </div>
 
@@ -39,12 +39,13 @@
 
                             <div class="input-group">
                                 <span class="input-group-addon" id="dest-addon"><i class="fa fa-map-marker"></i></span>
-                                <input type="text" class="form-control" id="destination" name="destination" placeholder="Destination" aria-describedby="dest-addon" value="3.858712, -76.296518">
+                                <input type="text" class="form-control" id="destination" name="destination" placeholder="Destination" aria-describedby="dest-addon" value="3.858712, -76.296518" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-success">Send <i class="fa fa-paper-plane"></i></button>
+                            <button class="btn btn-success" type="submit">Send <i class="fa fa-paper-plane"></i></button>
+                            <button class="btn btn-warning" type="button" id="restart"><i class="fa fa-refresh"></i></button>
                         </div>
                     </form>
                 </div>
@@ -66,16 +67,26 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-providers/1.1.7/leaflet-providers.min.js" charset="utf-8"></script>
 
         <script type="text/javascript">
+            var geojson,
+            initial = {'coordinates': [3.8935804, -76.2992685], 'zoom': 15},
+            map = L.map('map').setView(initial.coordinates, initial.zoom);
+            L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+
+            $('#restart').on('click', function(){
+                $('#origin, #destination, #result').val('');
+                map.removeLayer(geojson);
+                map.setView(initial.coordinates, initial.zoom);
+            });
+
             $('form').submit(function(event) {
                 event.preventDefault();
                 var form_data = $(this).serializeArray();
                 $.post('response', form_data, function(data) {
                     $('#result').val(JSON.stringify(data, undefined));
+                    geojson = L.geoJson(data).addTo(map);
+                    map.fitBounds(geojson.getBounds());
                 });
             });
-
-            var map = L.map('map').setView([3.8935804, -76.2992685], 15);
-            L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
         </script>
     </body>
 </html>
