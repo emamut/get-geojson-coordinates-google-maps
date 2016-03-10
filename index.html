@@ -6,6 +6,15 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
+        <style>
+            #map{
+                width: 100%;
+                height: 333px;
+                margin-top: 20px;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -13,33 +22,42 @@
                 <h1>GeoJSON coordinates with Google Maps API</h1>
             </div>
 
-            <form class="form-inline" method="post">
-                <div class="form-group">
-                    <label for="origin" class="sr-only"></label>
-
-                    <input type="text" class="form-control" id="origin" name="origin" placeholder="Origin" autocomplete="off">
-                </div>
-
-                <div class="form-group">
-                    <label for="destination" class="sr-only"></label>
-                    <input type="text" class="form-control" id="destination" name="destination" placeholder="Destination" autocomplete="off">
-                </div>
-
-                <div class="form-group">
-                    <button class="btn btn-success">Send</button>
-                </div>
-            </form>
-
             <div class="row">
                 <div class="col-md-12">
+                    <form class="form-inline" method="post">
+                        <div class="form-group">
+                            <label for="origin" class="sr-only"></label>
+
+                            <input type="text" class="form-control" id="origin" name="origin" placeholder="Origin">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="destination" class="sr-only"></label>
+                            <input type="text" class="form-control" id="destination" name="destination" placeholder="Destination">
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-success">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
                     <textarea name="result" id="result" cols="20" rows="15" class="form-control" style="margin-top: 20px" readonly></textarea>
                 </div>
-                <!-- <div class="col-md-6"></div> -->
+                <div class="col-md-6">
+                    <div id="map"></div>
+                </div>
             </div>
 
         </div>
 
         <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-providers/1.1.7/leaflet-providers.min.js" charset="utf-8"></script>
+
         <script type="text/javascript">
             $('form').submit(function(event) {
                 event.preventDefault();
@@ -48,6 +66,9 @@
                     $('#result').val(JSON.stringify(data, undefined));
                 });
             });
+
+            var map = L.map('map').setView([51.505, -0.09], 13);
+            L.tileLayer.provider('OpenStreetMap.BlackAndWhite').addTo(map);
         </script>
     </body>
 </html>
