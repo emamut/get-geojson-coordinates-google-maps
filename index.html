@@ -28,16 +28,23 @@
                         <div class="form-group">
                             <label for="origin" class="sr-only"></label>
 
-                            <input type="text" class="form-control" id="origin" name="origin" placeholder="Origin">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="orig-addon"><i class="fa fa-bullseye"></i></span>
+                                <input type="text" class="form-control" id="origin" name="origin" placeholder="Origin" aria-describedby="orig-addon" value="3.792435, -76.313538">
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label for="destination" class="sr-only"></label>
-                            <input type="text" class="form-control" id="destination" name="destination" placeholder="Destination">
+
+                            <div class="input-group">
+                                <span class="input-group-addon" id="dest-addon"><i class="fa fa-map-marker"></i></span>
+                                <input type="text" class="form-control" id="destination" name="destination" placeholder="Destination" aria-describedby="dest-addon" value="3.858712, -76.296518">
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-success">Send</button>
+                            <button class="btn btn-success">Send <i class="fa fa-paper-plane"></i></button>
                         </div>
                     </form>
                 </div>
